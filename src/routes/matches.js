@@ -18,7 +18,7 @@ matchesRouter.get("/", async (req, res) => {
   if (!parsed.success) {
     return res.status(400).json({
       message: "Invalid query",
-      details: JSON.stringify(parsed.error),
+      details: parsed.error.issues,
     });
   }
 
@@ -46,7 +46,7 @@ matchesRouter.post("/", async (req, res) => {
   if (!parsed.success) {
     return res.status(400).json({
       message: "Invalid payload",
-      details: parsed.error,
+      details: parsed.error.issues,
     });
   }
 
